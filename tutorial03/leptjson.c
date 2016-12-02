@@ -151,8 +151,10 @@ static int lept_parse_string(lept_context* c, lept_value* v) {
 				}
 				break;
             default:
-				if ((unsigned char)ch < 0x20)
+				if ((unsigned char)ch < 0x20){
+					c->json = head;
 					return LEPT_PARSE_INVALID_STRING_CHAR;
+				}
 				else 
 					PUTC(c, ch);
         }
